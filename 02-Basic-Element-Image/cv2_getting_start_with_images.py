@@ -1,6 +1,9 @@
 import cv2
 
 # 1.灰度图加载一张彩色图
+# cv2.IMREAD_COLOR：彩色图，默认值(1)
+# cv2.IMREAD_GRAYSCALE：灰度图(0)
+# cv2.IMREAD_UNCHANGED：包含透明通道的彩色图(-1)
 img = cv2.imread('lena.jpg', 0)
 
 
