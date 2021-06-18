@@ -16,16 +16,17 @@ flags = [i for i in dir(cv2) if i.startswith('COLOR_')]
 print(flags)
 
 # 蓝色的HSV值
-
 blue = np.uint8([[[255, 0, 0]]])
 hsv_blue = cv2.cvtColor(blue, cv2.COLOR_BGR2HSV)
 print(hsv_blue)  # [[[120 255 255]]]
 
 
 # 3.追踪蓝色物体
-capture = cv2.VideoCapture(0)
+# capture = cv2.VideoCapture(0)
+capture = cv2.VideoCapture("http://admin:admin@192.168.1.100:8081")
 
 # 蓝色的范围，不同光照条件下不一样，可灵活调整
+# H +- 10, 饱和度和明度灵活调整
 lower_blue = np.array([100, 110, 110])
 upper_blue = np.array([130, 255, 255])
 

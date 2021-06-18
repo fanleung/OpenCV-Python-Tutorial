@@ -14,7 +14,9 @@ class PyQtMainEntry(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.camera = cv2.VideoCapture(0)
+        # self.camera = cv2.VideoCapture(0)
+        self.camera = cv2.VideoCapture("http://admin:admin@192.168.42.129:8081")
+
         self.is_camera_opened = False  # 摄像头有没有打开标记
 
         # 定时器：30ms捕获一帧

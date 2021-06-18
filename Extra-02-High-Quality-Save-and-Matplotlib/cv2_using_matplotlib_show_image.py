@@ -24,6 +24,7 @@ plt.imshow(img2)
 plt.show()
 
 
+# 不使用 OpenCV, Matplotlib 也可以加载和保存图片
 # 3.加载和保存图片
 
 img = pli.imread('lena.jpg')

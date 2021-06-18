@@ -17,6 +17,9 @@ for meth in methods:
 
     # 匹配方法的真值
     method = eval(meth)
+    # 大图，小图，方法
+    # 返回匹配的灰度图，最白的地方表示最大的匹配
+    # 使用cv2.minMaxLoc()函数可以得到最大匹配值的坐标，以这个点为左上角角点
     res = cv2.matchTemplate(img, template, method)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
 

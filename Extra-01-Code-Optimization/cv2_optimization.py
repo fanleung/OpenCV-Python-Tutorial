@@ -1,6 +1,12 @@
 import cv2
 import numpy as np
 
+
+#start = cv2.getTickCount()
+## 这里写测试代码...
+#end = cv2.getTickCount()
+#print((end - start) / cv2.getTickFrequency())
+
 # 性能对比优化
 
 start = cv2.getTickCount()

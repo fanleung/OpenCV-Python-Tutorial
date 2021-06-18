@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 # 灰度图读入
 img = cv2.imread('gradient.jpg', 0)
 # 阈值分割，ret：return value缩写，代表当前的阈值，暂时不用理会
+# 参数1：要处理的原图，一般是灰度图
+# 参数2：设定的阈值
+# 参数3：对于THRESH_BINARY、THRESH_BINARY_INV阈值方法所选用的最大阈值，一般为255
+# 参数4：阈值的方式，主要有5种，详情：ThresholdTypes
+# 0 是黑色
 ret, th = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
 cv2.imshow('thresh', th)
 cv2.waitKey(0)
@@ -33,6 +38,14 @@ img = cv2.imread('sudoku.jpg', 0)
 # 固定阈值
 ret, th1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
 # 自适应阈值
+# 参数1：要处理的原图
+# 参数2：最大阈值，一般为255
+# 参数3：小区域阈值的计算方式
+# ADAPTIVE_THRESH_MEAN_C：小区域内取均值
+# ADAPTIVE_THRESH_GAUSSIAN_C：小区域内加权求和，权重是个高斯核
+# 参数4：阈值方法，只能使用THRESH_BINARY、THRESH_BINARY_INV，具体见前面所讲的阈值方法
+# 参数5：小区域的面积，如11就是11*11的小块
+# 参数6：最终阈值等于小区域计算出的阈值再减去此值
 th2 = cv2.adaptiveThreshold(
     img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 4)
 th3 = cv2.adaptiveThreshold(

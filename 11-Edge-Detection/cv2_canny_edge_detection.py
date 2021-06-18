@@ -3,6 +3,7 @@ import numpy as np
 
 # 1.Canny边缘检测
 img = cv2.imread('handwriting.jpg', 0)
+# img, 低阈值，高阈值
 edges = cv2.Canny(img, 30, 70)
 
 cv2.imshow('canny', np.hstack((img, edges)))

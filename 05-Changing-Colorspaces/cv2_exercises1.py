@@ -6,7 +6,9 @@ import numpy as np
 # Green：[[[ 60 255 255]]]
 # Red：[[[  0 255 255]]]
 
-capture = cv2.VideoCapture(1)
+# capture = cv2.VideoCapture(1)
+capture = cv2.VideoCapture("http://admin:admin@192.168.1.117:8081")
+# cap = cv2.VideoCapture("rtsp://admin:admin@192.168.1.100:8554/live")
 
 # 蓝色的范围
 lower_blue = np.array([100, 110, 110])

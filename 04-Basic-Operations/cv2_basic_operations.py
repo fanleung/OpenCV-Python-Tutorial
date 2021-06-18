@@ -2,16 +2,19 @@ import cv2
 
 img = cv2.imread('lena.jpg')
 
-# 1.获取像素的值
+# 1.获取像素的值 y = 100, x = 90
 px = img[100, 90]
-print(px)  # [103 98 197]
+print(px)  # [105 98 197] [B G R]
 
-# 只获取蓝色blue通道的值
+# 只获取蓝色 blue通道的值 img[100, 90, 0]
+# 只获取蓝色 green 通道的值 img[100, 90, 1]
+# 只获取蓝色 red 通道的值 img[100, 90, 2]
 px_blue = img[100, 90, 0]
-print(px_blue)  # 103
+print(px_blue)  # 105
 
 
 # 2.修改像素的值
+# 只操作了内存的像素点，原图没有保存没有修改
 img[100, 90] = [255, 255, 255]
 print(img[100, 90])  # [255 255 255]
 
@@ -37,7 +40,11 @@ cv2.waitKey(0)
 # 5.通道分割与合并
 b, g, r = cv2.split(img)
 img = cv2.merge((b, g, r))
-# 更推荐的获取某一通道方式
+# split 比较耗时， 更推荐的获取某一通道方式
 b = img[:, :, 0]
+g = img[:, :, 1]
+r = img[:, :, 2]
 cv2.imshow('b', b)
+cv2.imshow('g', g)
+cv2.imshow('r', r)
 cv2.waitKey(0)

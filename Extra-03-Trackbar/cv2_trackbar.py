@@ -14,6 +14,11 @@ img = np.zeros((300, 512, 3), np.uint8)
 cv2.namedWindow('image')
 
 # 创建RGB三个滑动条
+# 参数1：滑动条的名称
+# 参数2：所在窗口的名称
+# 参数3：当前的值
+# 参数4：最大值
+# 参数5：回调函数名称，回调函数默认有一个表示当前值的参数
 cv2.createTrackbar('R', 'image', 0, 255, nothing)
 cv2.createTrackbar('G', 'image', 0, 255, nothing)
 cv2.createTrackbar('B', 'image', 0, 255, nothing)

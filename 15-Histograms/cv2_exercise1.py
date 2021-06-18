@@ -6,6 +6,9 @@ img = cv2.imread('hist.jpg', 0)
 # 只计算左上角200*200的区域
 mask = np.zeros(img.shape, dtype=np.uint8)
 mask[:200, :200] = 255
+cv2.imshow('contours', mask)
+cv2.waitKey(0)
+
 
 hist_mask = cv2.calcHist([img], [0], mask, [256], [0, 256])
 

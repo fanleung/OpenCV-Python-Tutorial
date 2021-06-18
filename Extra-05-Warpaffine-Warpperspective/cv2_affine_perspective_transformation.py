@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 img = cv2.imread('drawing.jpg')
+print(img.shape)
+# 行，列，通道数
 rows, cols = img.shape[:2]
 
 
@@ -13,8 +15,11 @@ pts1 = np.float32([[50, 65], [150, 65], [210, 210]])
 # 变换后的三个点
 pts2 = np.float32([[50, 100], [150, 65], [100, 250]])
 
+
+
 # 生成变换矩阵，维数：2*3
 M = cv2.getAffineTransform(pts1, pts2)
+print(M)
 dst = cv2.warpAffine(img, M, (cols, rows))
 
 plt.subplot(121), plt.imshow(img), plt.title('input')

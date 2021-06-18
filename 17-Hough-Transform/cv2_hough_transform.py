@@ -9,6 +9,10 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 edges = cv2.Canny(gray, 50, 150)
 
 # 霍夫直线变换
+# 参数1：要检测的二值图（一般是阈值分割或边缘检测后的图）
+# 参数2：距离r的精度，值越大，考虑越多的线
+# 参数3：角度θ的精度，值越小，考虑越多的线
+# 参数4：累加数阈值，值越小，考虑越多的线
 lines = cv2.HoughLines(edges, 0.8, np.pi / 180, 90)
 
 # 将检测的线画出来（注意是极坐标噢）
@@ -30,8 +34,12 @@ cv2.waitKey(0)
 
 
 # 2. 统计概率霍夫线变换
+# 前面的方法又称为标准霍夫变换，它会计算图像中的每一个点，计算量比较大，
+# 另外它得到的是整一条线（r和θ），并不知道原图中直线的端点。
 drawing = np.zeros(img.shape[:], dtype=np.uint8)
 
+# minLineLength：最短长度阈值，比这个长度短的线会被排除
+# maxLineGap：同一直线两点之间的最大距离
 lines = cv2.HoughLinesP(edges, 0.8, np.pi / 180, 90,
                         minLineLength=50, maxLineGap=10)
 
@@ -46,7 +54,10 @@ cv2.waitKey(0)
 
 # 3. 霍夫圆变换
 drawing = np.zeros(img.shape[:], dtype=np.uint8)
-
+# 参数2：变换方法，一般使用霍夫梯度法，详情：HoughModes
+# 参数3 dp=1：表示霍夫梯度法中累加器图像的分辨率与原图一致
+# 参数4：两个不同圆圆心的最短距离
+# 参数5：param2跟霍夫直线变换中的累加数阈值一样
 circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 20, param2=30)
 circles = np.int0(np.around(circles))
 

@@ -8,7 +8,6 @@ blur = cv2.blur(img, (3, 3))
 # 上面的均值滤波也可以用方框滤波实现：normalize=True
 # blur = cv2.boxFilter(img, -1, (3, 3), normalize=True)
 
-
 # 2.高斯滤波
 gau_blur = cv2.GaussianBlur(img, (3, 3), 0)
 
@@ -20,6 +19,8 @@ cv2.waitKey(0)
 # 均值滤波vs高斯滤波
 img = cv2.imread('gaussian_noise.bmp')
 blur = cv2.blur(img, (5, 5))  # 均值滤波
+# 参数3 σx值越大，模糊效果越明显。
+# 高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器
 gaussian = cv2.GaussianBlur(img, (5, 5), 1)  # 高斯滤波
 
 res = np.hstack((img, blur, gaussian))
